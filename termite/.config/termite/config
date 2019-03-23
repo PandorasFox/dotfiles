@@ -1,0 +1,48 @@
+[options]
+#font = Monofur 10
+font = Monofur for Powerline 12
+dynamic_title = true
+
+[colors]
+
+# special
+foreground      = #f8f8f8
+foreground_bold = #f8f8f8
+cursor          = #f8f8f8
+#foreground      = #ffffff
+#foreground_bold = #ffffff
+#cursor          = #ffffff
+background = rgba(39, 40, 34, 0.8)
+
+# black
+color0  = #19171C
+color8  = #655F6D
+
+# red
+color1  = #BE4678
+color9  = #E23B59
+
+# green
+color2  = #2A9292
+color10 = #0DA77C
+
+# yellow
+color3  = #A06E3B
+color11 = #C96C20
+
+# blue
+color4  = #576DDB
+color12 = #3875C9
+
+# magenta
+color5  = #955AE7
+color13 = #BF40BF
+
+# cyan
+color6  = #398BC6
+color14 = #1CE5E0
+
+# white
+color7  = #8B8792
+color15 = #FFFFFF
+

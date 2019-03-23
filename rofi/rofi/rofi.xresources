@@ -1,0 +1,1 @@
+rofi.switchers: window,run,Workspace:i3_switch_workspaces.sh

@@ -1,0 +1,191 @@
+# Configuration file for dircolors, a utility to help you set the
+# LS_COLORS environment variable used by GNU ls with the --color option.
+# Copyright (C) 1996-2016 Free Software Foundation, Inc.
+# Copying and distribution of this file, with or without modification,
+# are permitted provided the copyright notice and this notice are preserved.
+# The keywords COLOR, OPTIONS, and EIGHTBIT (honored by the
+# slackware version of dircolors) are recognized but ignored.
+# Below are TERM entries, which can be a glob patterns, to match
+# against the TERM environment variable to determine if it is colorizable.
+TERM Eterm
+TERM ansi
+TERM color-xterm
+TERM con[0-9]*x[0-9]*
+TERM cons25
+TERM console
+TERM cygwin
+TERM dtterm
+TERM eterm-color
+TERM gnome
+TERM gnome-256color
+TERM hurd
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mach-color
+TERM mach-gnu-color
+TERM mlterm
+TERM putty
+TERM putty-256color
+TERM rxvt*
+TERM screen*
+TERM st
+TERM st-256color
+TERM terminator
+TERM tmux*
+TERM vt100
+TERM xterm*
+# Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+#NORMAL 00 # no color code at all
+FILE 0;35 # regular file: use no color at all
+RESET 0 # reset to "normal" color
+DIR 01;33;00 # directory
+LINK 01;36 # symbolic link. (If you set this to 'target' instead of a
+ # numerical value, the color is as for the file pointed to.)
+MULTIHARDLINK 00 # regular file with more than one link
+FIFO 40;33 # pipe
+SOCK 01;35 # socket
+DOOR 01;35 # door
+BLK 40;33;01 # block device driver
+CHR 40;33;01 # character device driver
+ORPHAN 40;31;01 # symlink to nonexistent file, or non-stat'able file ...
+MISSING 00 # ... and the files they point to
+SETUID 37;41 # file that is setuid (u+s)
+SETGID 30;43 # file that is setgid (g+s)
+CAPABILITY 30;41 # file with capability
+STICKY_OTHER_WRITABLE 30;42 # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 04;34 # dir that is other-writable (o+w) and not sticky
+STICKY 37;44 # dir with the sticky bit set (+t) and not other-writable
+# This is for files with execute permission:
+EXEC 01;34
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to colorize below. Put the extension, a space, and the color init string.
+# (and any comments you want to add after a '#')
+# If you use DOS-style suffixes, you may want to uncomment the following:
+#.cmd 01;32 # executables (bright green)
+#.exe 01;32
+#.com 01;32
+#.btm 01;32
+#.bat 01;32
+# Or if you want to colorize scripts even if they do not have the
+# executable bit actually set.
+#.sh 01;32
+#.csh 01;32
+ # archives or compressed (bright red)
+.tar 01;35
+.tgz 01;35
+.arc 01;35
+.arj 01;35
+.taz 01;35
+.lha 01;35
+.lz4 01;35
+.lzh 01;35
+.lzma 01;35
+.tlz 01;35
+.txz 01;35
+.tzo 01;35
+.t7z 01;35
+.zip 01;35
+.z 01;35
+.Z 01;35
+.dz 01;35
+.gz 01;35
+.lrz 01;35
+.lz 01;35
+.lzo 01;35
+.xz 01;35
+.bz2 01;35
+.bz 01;35
+.tbz 01;35
+.tbz2 01;35
+.tz 01;35
+.deb 01;35
+.rpm 01;35
+.jar 01;35
+.war 01;35
+.ear 01;35
+.sar 01;35
+.rar 01;35
+.alz 01;35
+.ace 01;35
+.zoo 01;35
+.cpio 01;35
+.7z 01;35
+.rz 01;35
+.cab 01;35
+# image formats
+.jpg 01;34
+.jpeg 01;34
+.gif 01;34
+.bmp 01;34
+.pbm 01;34
+.pgm 01;34
+.ppm 01;34
+.tga 01;34
+.xbm 01;34
+.xpm 01;34
+.tif 01;34
+.tiff 01;34
+.png 01;34
+.svg 01;34
+.svgz 01;34
+.mng 01;34
+.pcx 01;34
+.mov 01;34
+.mpg 01;34
+.mpeg 01;34
+.m2v 01;34
+.mkv 01;34
+.webm 01;34
+.ogm 01;34
+.mp4 01;34
+.m4v 01;34
+.mp4v 01;34
+.vob 01;34
+.qt 01;34
+.nuv 01;34
+.wmv 01;34
+.asf 01;34
+.rm 01;34
+.rmvb 01;34
+.flc 01;34
+.avi 01;34
+.fli 01;34
+.flv 01;34
+.gl 01;34
+.dl 01;34
+.xcf 01;34
+.xwd 01;34
+.yuv 01;34
+.cgm 01;34
+.emf 01;34
+# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.ogv 01;34
+.ogx 01;34
+# audio formats
+.aac 00;34
+.au 00;34
+.flac 00;34
+.m4a 00;34
+.mid 00;34
+.midi 00;34
+.mka 00;34
+.mp3 00;34
+.mpc 00;34
+.ogg 00;34
+.ra 00;34
+.wav 00;34
+# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.oga 00;34
+.opus 00;34
+.spx 00;34
+.xspf 00;34

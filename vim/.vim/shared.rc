@@ -1,0 +1,39 @@
+set number
+set relativenumber
+
+set mouse=a
+set tabstop=8
+set shiftwidth=8
+set noexpandtab
+"set tabstop=2 set shiftwidth=2 "
+set smartindent
+set nopaste
+syntax on
+set nowrap
+set whichwrap+=<,>,h,l,[,]
+set pastetoggle=<F2>
+set laststatus=2
+set ignorecase
+set infercase
+set timeoutlen=500
+set showcmd
+set t_Co=256
+
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
+" nvim term settings "
+set splitbelow
+set splitright
+
+colorscheme monokai
+hi Normal ctermbg=none
+hi LineNr ctermbg=none
+hi NonText ctermbg=none
+"hi Pmenu ctermfg=231 ctermbg=236 "
+"hi Comment ctermfg=69 "
+hi cFormat ctermfg=141
+hi cSpecial ctermfg=141
+hi Comment ctermfg=7
+
+

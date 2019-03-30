@@ -20,23 +20,10 @@ parser.add_argument(
     dest='custom_format'
 )
 parser.add_argument(
-    '-p',
-    '--playpause',
-    type=str,
-    metavar='play-pause indicator',
-    dest='play_pause'
-)
-parser.add_argument(
     '--font',
     type=str,
     metavar='the index of the font to use for the main label',
     dest='font'
-)
-parser.add_argument(
-    '--playpause-font',
-    type=str,
-    metavar='the index of the font to use to display the playpause indicator',
-    dest='play_pause_font'
 )
 
 
@@ -49,6 +36,8 @@ def fix_string(string):
     else:
         return string.encode('utf-8')
 
+SPOTIFY_GREEN = "#1DB954"
+
 # Default parameters
 output = fix_string(u'{play_pause} {artist} | {album}: {song}')
 trunclen = 50
@@ -56,15 +45,12 @@ play_pause = fix_string(u'\uf04b,\uf04c') # first character is play, second is p
 
 label_with_font = '%{{T{font}}}{label}%{{T-}}'
 font = args.font
-play_pause_font = args.play_pause_font
 
 # parameters can be overwritten by args
 if args.trunclen is not None:
     trunclen = args.trunclen
 if args.custom_format is not None:
     output = args.custom_format
-if args.play_pause is not None:
-    play_pause = args.play_pause
 
 try:
     session_bus = dbus.SessionBus()
@@ -83,17 +69,16 @@ try:
 
     # Handle play/pause label
 
-    play_pause = play_pause.split(',')
-
     if status == 'Playing':
-        play_pause = play_pause[0]
+        play_pause = f"%{{B{SPOTIFY_GREEN}}}%{{F#ffffff}}"
+        powerline_start = f"%{{B{SPOTIFY_GREEN}}}%{{F#222222}}%{{B- F-}}"
+        powerline_end = f"%{{B#222222}}%{{F{SPOTIFY_GREEN}}}%{{B- F-}}"
     elif status == 'Paused':
-        play_pause = play_pause[1]
+        play_pause = f"%{{B#222222}}%{{F{SPOTIFY_GREEN}}}"
+        powerline_start = f"%{{B#222222}}%{{F{SPOTIFY_GREEN}}}%{{B- F-}}"
+        powerline_end = f"%{{B#222222}}%{{F{SPOTIFY_GREEN}}}%{{B- F-}}"
     else:
         play_pause = str()
-
-    if play_pause_font:
-        play_pause = label_with_font.format(font=play_pause_font, label=play_pause)
 
     # Handle main label
 
@@ -115,7 +100,21 @@ try:
             song = label_with_font.format(font=font, label=song)
             album = label_with_font.format(font=font, label=album)
 
-        print(output.format(artist=artist, song=song, album=album, play_pause=play_pause))
+        spotify_logo = " ".format("utf-8")
+        reset_color = "%{B- F-}"
+        text = (powerline_start +
+                output.format(
+                    artist=artist,
+                    song=song,
+                    album=album,
+                    play_pause=play_pause
+                ) +
+                spotify_logo + " " +
+                reset_color +
+                powerline_end
+        )
+        
+        print(text)
 
 except Exception as e:
     if isinstance(e, dbus.exceptions.DBusException):

@@ -19,14 +19,15 @@ function precmd() {
 		print -n "\a"
 	fi
 	export ZSH_CMD_RUNNING=false
+	echo -en "\e]2;zsh\a"
 }
 
 function preexec() {
+	echo -en "\e]2;$2\a"
 	export ZSH_CMD_TIME_START=$SECONDS
 	export ZSH_CMD_RUNNING=true
 	export RPROMPT='%F{$ACCENT} $(vi_mode_prompt_info)   $(date "+%H:%M:%S")%f'
 	export PROMPT_COMMAND="$PROMPT_COMMAND;echo -ne \"\033]0;\$(pwd) \007\""
-
 }
 
 function timer() {

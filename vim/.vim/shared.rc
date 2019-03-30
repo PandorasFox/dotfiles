@@ -1,5 +1,6 @@
 set number
 set relativenumber
+set title
 
 set mouse=a
 set tabstop=8

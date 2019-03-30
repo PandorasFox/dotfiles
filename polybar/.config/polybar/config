@@ -27,10 +27,18 @@ primary = #00af87
 secondary = #e60053
 alert = #ff00ff
 
+spotify = #1DB954
+
+blue = #5BCEFA
+pink = #F5A9B8
+white = #FFFFFF
+
+black = #000000
+
 [bar/bar1]
 monitor = ${env:MONITOR:DisplayPort-1}
 width = 100%
-height = 30
+height = 31
 
 radius = 6.0
 fixed-center = true
@@ -44,21 +52,15 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-padding-left = 0
-padding-right = 2
+font-0 = monofur:style=Regular;2
+font-1 = monofur for Powerline:antialias=false:size=23;6
+font-2 = Font Awesome 5 Brands Regular:style=Regular;3
+font-3 = Font Awesome 5 Free Solid:style=Solid;3
+font-4 = Font Awesome 5 Free Regular:style=Regular;3
+font-5 = Symbola:style=Regular
 
-module-margin-left = 1
-module-margin-right = 2
-module-margingin-top = 6
-
-font-0 = monofur for Powerline:style=Regular;2
-font-1 = Font Awesome 5 Brands Regular:style=Regular;3
-font-2 = Font Awesome 5 Free Solid:style=Solid;3
-font-3 = Font Awesome 5 Free Regular:style=Regular;3
-font-4 = Symbola:style=Regular
-
-modules-left = i3 filesystem xwindow
-modules-center = spotify 
+modules-left = i3 spotify filesystem
+modules-center = xwindow
 modules-right = pulseaudio memory cpu eth temperature date 
 
 tray-position = right
@@ -74,7 +76,7 @@ cursor-scroll = ns-resize
 [bar/bar2]
 monitor = ${env:MONITOR:DisplayPort-2}
 width = 100%
-height = 20
+height = 31
 radius = 6.0
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -91,10 +93,12 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = monofur for Powerline:style=Regular:size=10
-font-1 = Font Awesome 5 Brands Regular:style=Regular:size=10
-font-2 = Font Awesome 5 Free Solid:style=Solid:size=10
-font-3 = Font Awesome 5 Free Regular:style=Regular:size=10
+font-0 = monofur:style=Regular;2
+font-1 = monofur for Powerline:size=31;0
+font-2 = Font Awesome 5 Brands Regular:style=Regular;3
+font-3 = Font Awesome 5 Free Solid:style=Solid;3
+font-4 = Font Awesome 5 Free Regular:style=Regular;3
+font-5 = Symbola:style=Regular
 
 modules-left = i3
 cursor-click = pointer
@@ -103,10 +107,9 @@ cursor-scroll = ns-resize
 [module/spotify]
 type = custom/script
 interval = 1
-format-suffix = " "
 format = <label>
-exec = python ~/.config/polybar/spotify.py -f '{play_pause} {artist} | {album}: {song}' -t 50
-format-underline = #1DB954
+exec = python ~/.config/polybar/spotify.py -f '{play_pause} | {album}: {song}' -t 50
+format-suffix = "  "
 
 [module/xwindow]
 type = internal/xwindow
@@ -141,8 +144,9 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-background = ${colors.background}
+label-focused-underline= ${colors.spotify}
+label-focused-overline= ${colors.spotify}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -153,6 +157,7 @@ label-unfocused-padding = 2
 label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
+label-visible-overline= ${self.label-focused-overline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -163,64 +168,6 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format = <label> <ramp-coreload>
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
-label = %percentage:2%%
-
-ramp-coreload-spacing = 1
-ramp-coreload-0 = ▁
-ramp-coreload-1 = ▂
-ramp-coreload-2 = ▃
-ramp-coreload-3 = ▄
-ramp-coreload-4 = ▅
-ramp-coreload-5 = ▆
-ramp-coreload-6 = ▇
-ramp-coreload-7 = █
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
-label = %percentage_used%%
-
-[module/eth]
-type = internal/network
-interface = enp4s0
-interval = 3.0
-
-format-connected-underline = ${colors.primary}
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected-prefix = " "
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.alert}
-label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 5
-
-date = "%Y-%m-%d"
-date-alt = "%Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
-
-label = %date% %time%
-
 [module/pulseaudio]
 type = internal/pulseaudio
 
@@ -228,8 +175,9 @@ format-volume = <label-volume> <bar-volume>
 label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 
+format-muted = <label-muted> <bar-volume>
 label-muted =  muted
-label-muted-foreground = #666
+label-muted-foreground = ${colors.foreground-alt}
 
 use-ui-max = false
 
@@ -250,50 +198,101 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
+[module/memory]
+type = internal/memory
+label = %percentage_used%%
+interval = 2
+format-foreground = ${colors.black}
+format-background = ${colors.blue}
+format-prefix = " "
+format-prefix-foreground = ${colors.blue}
+format-prefix-background = ${colors.background}
+format-suffix = ""
+format-suffix-foreground = ${colors.pink}
+format-suffixfix-background = ${colors.blue}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-foreground = ${colors.black}
+format-background = ${colors.pink}
+format = <label> <ramp-coreload>
+label = %percentage:2%%
+
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interval = 3.0
+
+label-connected = %local_ip%
+format-connected-foreground = ${colors.black}
+format-connected-background = ${colors.white}
+format-connected-prefix = ""
+format-connected-prefix-background = ${colors.pink}
+format-connected-prefix-foreground = ${colors.white}
+format-connected-suffix = ""
+format-connected-suffix-background = ${colors.white}
+format-connected-suffix-foreground = ${colors.pink}
+
+label-disconnected = %ifname% disconnected
+format-disconnected-foreground = ${colors.black}
+format-disconnected-background = ${colors.alert}
+format-disconnected-prefix = ""
+format-disconnected-prefix-background = ${colors.pink}
+format-disconnected-prefix-foreground = ${colors.alert}
+format-disconnected-suffix = ""
+format-disconnected-suffix-background = ${colors.alert}
+format-disconnected-suffix-foreground = ${colors.pink}
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
 format = <label>
-format-underline = ${colors.primary}
-format-warn = <label-warn>
-format-warn-underline = ${self.format-underline}
-
 label = %temperature-c%
+format-foreground = ${colors.black}
+format-background = ${colors.pink}
+
+format-warn = <label-warn>
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+format-warn-foregorund = ${colors.black}
+format-warn-background = ${colors.pink}
+
+
 
 hwmon-path = /sys/devices/platform/it87.2656/hwmon/hwmon2/temp1_input
 
-[module/powermenu]
-type = custom/menu
+[module/date]
+type = internal/date
+interval = 1
 
-expand-right = true
+date = "%Y-%m-%d"
+time = %H:%M:%S
+label = %date% %time%
 
-format-spacing = 1
+format-background = ${colors.blue}
+format-foreground = ${colors.black}
 
-label-open = P
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+format-prefix = ""
+format-prefix-foreground = ${colors.blue}
+format-prefix-background = ${colors.pink}
 
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
+format-suffix = " "
+format-suffix-foreground = ${colors.background}
+format-suffix-background = ${colors.blue}
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true

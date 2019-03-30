@@ -19,3 +19,4 @@ Stuff I use that doesn't have anything in here:
 Things I have yet to do with my configs, but am planning on doing so:
 * I need to switch from xfce4-notifyd to dunst later
 * I need to get termite to properly set its window title (does tmux interfere?)
+* Add a screenshot to this readme

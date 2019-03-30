@@ -10,6 +10,7 @@ function check_last_exit_code() {
 function precmd() {
 	export LAST_EXIT_CODE=$?
 	local ZSH_CMD_TIME_STOP=$SECONDS
+	echo -en "\e]2;zsh\a"
 	if [[ "$ZSH_CMD_RUNNING" = "true" ]]; then
 		export ZSH_CMD_TIME_ELAPSED=$((ZSH_CMD_TIME_STOP - ZSH_CMD_TIME_START))
 	else
@@ -19,7 +20,6 @@ function precmd() {
 		print -n "\a"
 	fi
 	export ZSH_CMD_RUNNING=false
-	echo -en "\e]2;zsh\a"
 }
 
 function preexec() {

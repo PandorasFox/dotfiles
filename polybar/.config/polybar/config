@@ -35,8 +35,8 @@ white = #FFFFFF
 
 black = #000000
 
-[bar/bar1]
-monitor = ${env:MONITOR:DisplayPort-1}
+[bar/bar0]
+monitor = ${env:MONITOR:DisplayPort-0}
 width = 100%
 height = 31
 
@@ -70,6 +70,37 @@ tray-padding = 2
 ;wm-restack = i3
 ;override-redirect = true
 
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/bar1]
+monitor = ${env:MONITOR:DisplayPort-1}
+width = 100%
+height = 31
+radius = 6.0
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = monofur:style=Regular;2
+font-1 = monofur for Powerline:size=31;0
+font-2 = Font Awesome 5 Brands Regular:style=Regular;3
+font-3 = Font Awesome 5 Free Solid:style=Solid;3
+font-4 = Font Awesome 5 Free Regular:style=Regular;3
+font-5 = Symbola:style=Regular
+
+modules-left = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -123,6 +154,7 @@ mount-0 = /
 mount-1 = /mnt/Velox
 mount-2 = /mnt/Vulpes
 mount-3 = /mnt/Corsac
+mount-4 = /mnt/Incubus
 
 label-mounted = %{F#00af87}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
@@ -232,7 +264,7 @@ ramp-coreload-7 = █
 
 [module/eth]
 type = internal/network
-interface = enp4s0
+interface = enp5s0
 interval = 3.0
 
 label-connected = %local_ip%

@@ -10,8 +10,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $dp DisplayPort-2
-set $dp-right Displayport-1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -109,8 +107,12 @@ set $ws8 "8:"
 set $ws9 "9:"
 set $ws10 "10:"
 
+workspace $ws1 output DisplayPort-1
+workspace $ws2 output DisplayPort-0
+workspace $ws6 output DisplayPort-2
+
 # switch to workspace
-bindsym $mod+1 workspace $ws1
+bindsym $mod+1 workspace $ws1 
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
@@ -236,5 +238,5 @@ exec --no-startup-id xrdb merge ~/rofi/rofi.xresources
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -c
 exec --no-startup-id pasystray
-exec --no-startup-id feh --bg-fill --no-xinerama ~/wallpapers/multimon-spanning_2.png
+exec --no-startup-id ~/.screenlayout/default.sh && nitrogen --restore
 exec $tg

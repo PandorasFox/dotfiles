@@ -12,7 +12,7 @@ cursor          = #f8f8f8
 #foreground      = #ffffff
 #foreground_bold = #ffffff
 #cursor          = #ffffff
-background = rgba(39, 40, 34, 0.8)
+background = rgba(39, 40, 34, 0.4)
 
 # black
 color0  = #19171C

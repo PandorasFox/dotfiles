@@ -135,6 +135,12 @@ label:focus {
     margin: 0 25px;
 }
 
+#custom-spotify.pause {
+    color: #1DB954;
+    background-color: rgba(0,0,0,0);
+
+}
+
 #idle_inhibitor.activated {
 /*    background-color: #ecf0f1; */
     color: #2d3436;

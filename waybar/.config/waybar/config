@@ -92,9 +92,8 @@
 	"custom/spotify": {
 		"format": " {}",
 		"return-type": "json",
-		"max-length": 70,
-		// "interval": 30, // Remove this if your script is endless and write in loop
-		"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+		// "max-length": 70,
+		"exec": "$HOME/.cargo/bin/media-status",
 		"exec-if": "pgrep spotify"
 	}
 }

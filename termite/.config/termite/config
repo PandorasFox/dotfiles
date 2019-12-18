@@ -2,6 +2,7 @@
 #font = Monofur 10
 font = Monofur for Powerline 12
 dynamic_title = true
+urgent_on_bell = true
 
 [colors]
 
@@ -12,7 +13,7 @@ cursor          = #f8f8f8
 #foreground      = #ffffff
 #foreground_bold = #ffffff
 #cursor          = #ffffff
-background = rgba(39, 40, 34, 0.4)
+background = rgba(0, 0, 0, 0.65)
 
 # black
 color0  = #19171C

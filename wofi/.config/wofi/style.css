@@ -1,0 +1,39 @@
+window {
+margin: 5px;
+padding: 5px;
+background-color: rgba(0,0,0,0.8);
+}
+
+#input {
+background-color: rgba(0, 0, 0, 0);
+color: white;
+border: 0px solid rgba(0,0,0,0);
+}
+
+#input:focus {
+background-color: rgba(255, 0, 255, 0.3);
+color: white;
+border: 0px solid rgba(0,0,0,0);
+}
+
+#inner-box {
+background-color: rgba(0,0,0,0);
+}
+
+#inner-box flowboxchild:focus {
+background-color: rgba(255, 0, 255, 0.3);
+}
+
+#outer-box {
+background-color: rgba(0, 0, 0, 0);
+}
+
+#scroll {
+background-color: rgba(0,0,0,0);
+}
+
+#text {
+margin: 2px;
+background-color: rgba(0,0,0,0);
+color: white;
+} 

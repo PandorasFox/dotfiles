@@ -1,15 +1,20 @@
 local files=(
-  $ZDOTDIR/history.zsh
-  $ZDOTDIR/prompt.zsh
-  $ZDOTDIR/completion.zsh
-  $ZDOTDIR/aliases.zsh
-  $ZDOTDIR/tmux.zsh
-  $ZDOTDIR/keybinds.zsh
-  $ZDOTDIR/ssh-agent.zsh
+  history.zsh
+  prompt.zsh
+  completion.zsh
+  aliases.zsh
+  tmux.zsh
+  keybinds.zsh
+  ssh-agent.zsh
+  env.zsh
 )
 
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+	exec sway
+fi
+
 for i in $files; do
-  if [[ -e $i ]]; then
-    source $i
+  if [[ -e $ZDOTDIR/$i ]]; then
+    source $ZDOTDIR/$i
   fi
 done

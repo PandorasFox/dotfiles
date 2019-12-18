@@ -1,0 +1,101 @@
+{
+	"layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+	"height": 35, // Waybar height (to be removed for auto height)
+	// "width": 1280, // Waybar width
+	"modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
+	"modules-center": ["sway/window"],
+	"modules-right": ["pulseaudio", "network", "temperature", "battery", "clock", "idle_inhibitor", "tray"],
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+
+	},
+	"sway/mode": {
+		"format": "<span style=\"italic\">{}</span>"
+	},
+	"sway/window": {
+		"tooltip": false
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"tray": {
+		"icon-size": 21,
+		"spacing": 10
+	},
+	"clock": {
+		"tooltip-format": "{:%A | %Y-%m-%d | %H:%M}",
+		"format-alt": "{:%Y-%m-%d}",
+		"format": "{:%A | %H:%M}"
+	},
+	"temperature": {
+		// "thermal-zone": 2,
+		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"critical-threshold": 80,
+		// "format-critical": "{temperatureC}°C {icon}",
+		"format": "{temperatureC}°C {icon}",
+		"format-alt": "{temperatureF}°F {icon}",
+		"format-icons": ["", "", ""]
+	},
+	"backlight": {
+		"format": "{percent}% {icon}",
+		"format-icons": ["", ""]
+	},
+	"battery": {
+		"bat": "BAT0",
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% ",
+		"format-plugged": "{capacity}% ",
+		"format-alt": "{time} {icon}",
+		//"format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": ["", "", "", "", ""]
+	},
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"disable-scroll": true,
+		"format": "{volume}% {icon} {format_source}",
+		"format-bluetooth": "{volume}%  {icon} {format_source}",
+		"format-bluetooth-muted": "   {icon} {format_source}",
+		"format-muted": " {format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphones": "",
+			"handsfree": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", ""]
+		},
+		"on-click": "pavucontrol"
+	},
+	"custom/spotify": {
+		"format": " {}",
+		"return-type": "json",
+		"max-length": 70,
+		// "interval": 30, // Remove this if your script is endless and write in loop
+		"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+		"exec-if": "pgrep spotify"
+	}
+}
+

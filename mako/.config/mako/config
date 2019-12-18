@@ -1,0 +1,8 @@
+anchor=top-right
+background-color=#000000bb
+font=Monofur 12
+border-size=3
+border-color=#ff00ffbb
+progress-color=source #ff00ffbb
+width=500
+height=200

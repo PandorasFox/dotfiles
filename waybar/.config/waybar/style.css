@@ -1,0 +1,150 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Monofur, Roboto, sans-serif;
+    font-size: 18px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.5);
+/*    border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+    border-bottom: 3px solid transparent;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    box-shadow: inherit;
+    border-bottom: 3px solid #ff00ff;
+}
+
+#workspaces button.focused {
+    color: #e97aff;
+    border-bottom: 3px solid #ff00ff;
+}
+
+#workspaces button.urgent {
+    background-color: #ff00ff;
+    color: #ffffff
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+window#waybar box box:nth-child(3) widget:nth-child(4n+1) label {
+    border-bottom: 5px solid #5BCEFA;
+    color: #ffffff;
+}
+
+window#waybar box box:nth-child(3) widget:nth-child(2n) label {
+    border-bottom: 5px solid #F5A9B8;
+    color: #ffffff;
+}
+
+window#waybar box box:nth-child(3) widget:nth-child(4n+3) label {
+    border-bottom: 5px solid #ffffff;
+    color: #ffffff;
+}
+
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor {
+    padding: 0 10px;
+}
+
+#battery.charging {
+    color: #ffffff;
+    background-color: rgba(38,166,91,0.7);
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #ffffff;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #ffffff;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#network {
+    color: #ffffff;
+}
+
+#pulseaudio {
+    color: #ffffff;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+#custom-spotify {
+    background-color: #1DB954;
+    padding: 0 10px;
+    margin: 0 25px;
+}
+
+#idle_inhibitor.activated {
+/*    background-color: #ecf0f1; */
+    color: #2d3436;
+}
+
+#workspaces button {
+	text-shadow: 0 -15px 2.5px transparent,0 15px 2.5px transparent;
+}
+
+#workspaces button:hover {
+	text-shadow: 0 0 2.5px rgba(255,0,255,.75),0 0 2.5px rgba(255,0,255,.75);
+	color: transparent;
+}

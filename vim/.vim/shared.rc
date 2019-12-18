@@ -31,10 +31,5 @@ colorscheme monokai
 hi Normal ctermbg=none
 hi LineNr ctermbg=none
 hi NonText ctermbg=none
-"hi Pmenu ctermfg=231 ctermbg=236 "
-"hi Comment ctermfg=69 "
-hi cFormat ctermfg=141
-hi cSpecial ctermfg=141
-hi Comment ctermfg=7
 
 

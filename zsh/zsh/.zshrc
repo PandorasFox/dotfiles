@@ -5,13 +5,13 @@ local files=(
   aliases.zsh
   tmux.zsh
   keybinds.zsh
-  ssh-agent.zsh
+#  ssh-agent.zsh
   env.zsh
 )
 
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-	exec sway
-fi
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#	exec sway
+#fi
 
 for i in $files; do
   if [[ -e $ZDOTDIR/$i ]]; then

@@ -15,7 +15,7 @@
 		"format": "<span style=\"italic\">{}</span>"
 	},
 	"sway/window": {
-		"tooltip": false
+		"max-length": 100
 	},
 	"idle_inhibitor": {
 		"format": "{icon}",
@@ -93,8 +93,15 @@
 		"format": " {}",
 		"return-type": "json",
 		// "max-length": 70,
-		"exec": "$HOME/.cargo/bin/media-status",
+		"exec": "$HOME/.cargo/bin/media-status spotify",
 		"exec-if": "pgrep spotify"
+	},
+	"custom/youtube": {
+		"format": " {}",
+		"return-type": "json",
+		// "max-length": 70,
+		"exec": "$HOME/.cargo/bin/media-status Firefox",
+		"exec-if": "pgrep firefox"
 	}
 }
 

@@ -15,7 +15,12 @@ set $menu dmenu_path | wofi --show dmenu | xargs swaymsg exec --
 #set $menu wofi --show run
 
 ### Output configuration
-output eDP-1 bg /home/cass/Pictures/spacebedinkcolorHR_2496_1664.png fill
+output eDP-1 {
+	background /home/cass/Pictures/spacebedinkcolorHR_2560_1440.png fill
+	resolution 2560x1440
+	position 0 0
+	scale 1
+}
 
 ### Idle configuration
 #
@@ -31,39 +36,44 @@ output eDP-1 bg /home/cass/Pictures/spacebedinkcolorHR_2496_1664.png fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+exec swayidle -w \
+        timeout 300 'swaylock-blur' \
+	before-sleep 'swaylock-blur'
+
 ### Input configuration
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 
-input 1118:2338:Microsoft_Surface_HID_Touchpad {
+input 1739:52619:SYNA8004:00_06CB:CD8B_Touchpad {
   natural_scroll true
   click_method clickfinger
 #  click_method button_areas
 #  middle_emulation enabled
 }
 
-input 1118:2338:Microsoft_Surface_HID_Keyboard {
+input 1:1:AT_Translated_Set_2_keyboard {
   xkb_options caps:escape
 }
 
 ### Key bindings
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec $menu
+bindsym $mod+d exec swaylock-blur
 bindsym $mod+Tab exec $menu
 bindsym --release Print exec /home/cass/bin/foxshot region
 bindsym --release Shift+Print exec /home/cass/bin/foxshot
-bindsym XF86MonBrightnessUp exec light -A 20
-bindsym XF86MonBrightnessDown exec light -U 20
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
- bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPlay exec playerctl play-pause
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 floating_modifier $mod normal
 
 # Reload the configuration file
+# TODO: figure out if there's a way to get this to not send to clients (i.e. vim getting a C)
 bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
@@ -150,7 +160,8 @@ hide_edge_borders both
 default_border none
 gaps inner 10px
 
-assign [app_id="telegramdesktop"] workspace 1 $ws-1
+assign [app_id="telegramdesktop" title="Telegram"] workspace 1 $ws-1
+for_window [app_id="onboard"] floating enable
 # have to for_window bc electron's initial window has no info to assign on
 for_window [class="discord"] move container to workspace 5 $ws-5
 for_window [class="Spotify"] move container to workspace 6 $ws-6
@@ -164,11 +175,14 @@ set $gnome-schema org.gnome.desktop.interface
 exec gsettings set $gnome-schema gtk-theme 'Ant-Dracula'
 exec gsettings set $gnome-schema icon-theme 'Flat-Remix-Blue-Dark'
 
+# screen rotation
+exec rot8
+# bindswitch tablet here, if that was necessary
+
 exec_always {
 	~/.config/waybar/launch.sh
 }
 
 exec mako
-
 
 include /etc/sway/config.d/*

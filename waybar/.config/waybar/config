@@ -1,11 +1,11 @@
 {
 	"layer": "top", // Waybar at top layer
 	"position": "top", // Waybar position (top|bottom|left|right)
-	"height": 35, // Waybar height (to be removed for auto height)
+	"height": 25, // Waybar height (to be removed for auto height)
 	// "width": 1280, // Waybar width
 	"modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
 	"modules-center": ["sway/window"],
-	"modules-right": ["pulseaudio", "network", "temperature", "battery", "clock", "idle_inhibitor", "tray"],
+	"modules-right": ["pulseaudio", "network", "temperature", "battery", "clock", "idle_inhibitor", "custom/kb", "tray"],
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"format": "{name}"
@@ -25,7 +25,7 @@
 		}
 	},
 	"tray": {
-		"icon-size": 21,
+		"icon-size": 20,
 		"spacing": 10
 	},
 	"clock": {
@@ -94,14 +94,12 @@
 		"return-type": "json",
 		// "max-length": 70,
 		"exec": "$HOME/.cargo/bin/media-status spotify",
-		"exec-if": "pgrep spotify"
+		"exec-if": "pgrep spotify",
+		"on-click": "playerctl -p spotify play-pause" 
 	},
-	"custom/youtube": {
-		"format": " {}",
-		"return-type": "json",
-		// "max-length": 70,
-		"exec": "$HOME/.cargo/bin/media-status Firefox",
-		"exec-if": "pgrep firefox"
+	"custom/kb": {
+		"format": "",
+		"on-click": "$HOME/bin/onboard-toggle"
 	}
 }
 

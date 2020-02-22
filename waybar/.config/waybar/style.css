@@ -34,11 +34,6 @@ window#waybar.solo {
     border-bottom: 3px solid transparent;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    box-shadow: inherit;
-    border-bottom: 3px solid #ff00ff;
-}
 
 #workspaces button.focused {
     color: #e97aff;
@@ -146,11 +141,14 @@ label:focus {
     color: #2d3436;
 }
 
+
 #workspaces button {
+	background: transparent;
 	text-shadow: 0 -15px 2.5px transparent,0 15px 2.5px transparent;
 }
 
 #workspaces button:hover {
+	background: transparent;
 	text-shadow: 0 0 2.5px rgba(255,0,255,.75),0 0 2.5px rgba(255,0,255,.75);
 	color: transparent;
 }

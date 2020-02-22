@@ -1,23 +1,25 @@
 window {
 margin: 5px;
 padding: 5px;
-background-color: rgba(0,0,0,0.8);
+background-color: rgba(0,0,0,0.0);
 }
 
 #input {
-background-color: rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0.8);
 color: white;
 border: 0px solid rgba(0,0,0,0);
+margin: 0px 150px 40px 150px;
 }
 
 #input:focus {
-background-color: rgba(255, 0, 255, 0.3);
+background-color: rgba(64, 0, 64, 0.8);
 color: white;
 border: 0px solid rgba(0,0,0,0);
+margin: 0px 0px 5px 0px;
 }
 
-#inner-box {
-background-color: rgba(0,0,0,0);
+#selected {
+background-color: rgba(0, 0, 0, 0); 
 }
 
 #inner-box flowboxchild:focus {
@@ -32,8 +34,15 @@ background-color: rgba(0, 0, 0, 0);
 background-color: rgba(0,0,0,0);
 }
 
+#entry {
+background-color: rgba(0,0,0,0.8);
+margin: 0px 150px 5px 150px;
+padding: 5px 0px;
+border-radius: 15px;
+}
+
 #text {
-margin: 2px;
-background-color: rgba(0,0,0,0);
+background-color: rgba(0,0,0,0.0);
 color: white;
+margin: 0 25px;
 } 

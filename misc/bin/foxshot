@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+#set -e
+
+TIMESTAMP=$(date +%F_%T)
+OUTDIR=/home/cass/screenshots
+OUT=$OUTDIR/${TIMESTAMP}.png
+OUT_FULL=$OUTDIR/${TIMESTAMP}_full.png
+
+if [[ $1 == "region" ]]; then
+	grim -g "$(slurp -b 00000080)" $OUT
+elif [[ $1 == "region-delay" ]]; then
+	sleep ${2:-3}; grim -c /dev/stdout | tee $OUT_FULL | imv -f -&
+	imv_pid=$!
+	until swaymsg -t get_tree | grep $imv_pid > /dev/null; do
+		sleep 0.001
+	done
+		
+	grim -g "$(slurp -b 00000080)" $OUT
+	imv-msg $imv_pid quit
+fi
+
+TYPE=$(file -b --mime-type "$OUT")
+wl-copy -t $TYPE < $OUT

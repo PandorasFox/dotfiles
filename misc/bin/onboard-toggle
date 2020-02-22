@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# could probably do something like:
+# if not pkill -9 onboard; onboard
+# basically just "if pkill -9 returned 1, start it bc it wasn't running"
+# unfortunately i hate shell scripting so :')
+
+if pgrep ^onboard$; then
+	pkill -9 ^onboard$
+else
+	exec /sbin/onboard
+fi

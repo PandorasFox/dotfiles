@@ -59,14 +59,17 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec swaylock-blur
 bindsym $mod+Tab exec $menu
-bindsym --release Print exec /home/cass/bin/foxshot region
-bindsym --release Shift+Print exec /home/cass/bin/foxshot
+bindsym --release Print exec /home/cass/bin/foxshot
+bindsym --release Ctrl+Print exec /home/cass/bin/foxshot region
+bindsym --release Shift+Print exec /home/cass/bin/foxshot region-delay 3
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86AudioPlay exec playerctl play-pause
+
+bindsym $mod+h exec systemctl hibernate
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -162,6 +165,7 @@ gaps inner 10px
 
 assign [app_id="telegramdesktop" title="Telegram"] workspace 1 $ws-1
 for_window [app_id="onboard"] floating enable
+for_window [app_id="pavucontrol"] floating enable
 # have to for_window bc electron's initial window has no info to assign on
 for_window [class="discord"] move container to workspace 5 $ws-5
 for_window [class="Spotify"] move container to workspace 6 $ws-6

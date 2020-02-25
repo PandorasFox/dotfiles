@@ -5,7 +5,7 @@ local files=(
   aliases.zsh
   tmux.zsh
   keybinds.zsh
-#  ssh-agent.zsh
+  ssh-agent.zsh
   env.zsh
 )
 
